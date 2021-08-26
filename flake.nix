@@ -11,7 +11,7 @@
     let
       getNixFilesInDir = dir: builtins.filter (file: lib.hasSuffix ".nix" file && file != "default.nix") (builtins.attrNames (builtins.readDir dir));
       genKey = str: lib.replaceStrings [ ".nix" ] [ "" ] str;
-      genModValue = dir: str: { config }: { imports = [ "/${dir}${str}" ]; };
+      genModValue = dir: str: { config, options, lib, ... }: { imports = [ "/${dir}${str}" ]; };
       genMachineValue = dir: str: lib.nixosSystem { system = "aarch64-linux"; modules = [ "/${dir}${str}" ]; };
       oneFrom = gen: dir: str: { "${genKey str}" = gen dir str; };
 
