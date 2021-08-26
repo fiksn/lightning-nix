@@ -3,7 +3,7 @@
   imports =
     [
       <nixpkgs/nixos/modules/profiles/hardened.nix>
-    ]
+    ];
 
   # Hardened scudo allocator does not work
   environment.memoryAllocator.provider = lib.mkForce "libc";
