@@ -72,7 +72,7 @@ you can install relatively new versions of software.
 
 With
 ```bash
-nixos-rebuild switch --flake 'github:fiksn/lightning-nix#example'
+nixos-rebuild switch --flake 'github:fiksn/lightning-nix#node'
 ```
 you can switch to the example machine configuration.
 
