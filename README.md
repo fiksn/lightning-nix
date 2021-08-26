@@ -63,19 +63,20 @@ nix flake show
 ```
 to check what is included.
 
-More [flake examples](https://nixos.wiki/wiki/Flakes)
+With
+```bash
+nix profile install 'github:fiksn/lightning-nix#lnd'
+nix profile install 'github:fiksn/lightning-nix#bitcoind'
+```
+you can install relatively new versions of software.
 
 With
 ```bash
-nixos-rebuild switch --flake '.#example'
+nixos-rebuild switch --flake 'github:fiksn/lightning-nix#example'
 ```
 you can switch to the example machine configuration.
 
-With
-```bash
-nix profile install github:fiksn/lightning-nix#lnd
-```
-you can install latest lnd.
+More [flake examples](https://nixos.wiki/wiki/Flakes)
 
 ## Support
 
