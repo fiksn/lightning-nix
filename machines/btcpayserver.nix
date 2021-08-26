@@ -10,6 +10,8 @@ let
   server = "1.2.3.4";
 in
 {
+  imports = [ ../common.nix ];
+
   services.nginx = {
     enable = true;
 

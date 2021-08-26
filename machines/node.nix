@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
+    ../common.nix
     ../blockchain-services.nix
     ../rpi.nix
   ];
