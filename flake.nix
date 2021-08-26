@@ -12,7 +12,7 @@
       getNixFilesInDir = dir: builtins.filter (file: lib.hasSuffix ".nix" file && file != "default.nix") (builtins.attrNames (builtins.readDir dir));
       genKey = str: lib.replaceStrings [ ".nix" ] [ "" ] str;
       genModValue = dir: str: { config }: { imports = [ "/${dir}${str}" ]; };
-      genMachineValue = dir: str: { config }: lib.nixosSystem { modules = [ "/${dir}${str}" ]; };
+      genMachineValue = dir: str: { config }: lib.nixosSystem { system = "aarch64-linux"; modules = [ "/${dir}${str}" ]; };
       oneFrom = gen: dir: str: { "${genKey str}" = gen dir str; };
 
       modulesFromDir = dir: builtins.foldl' (x: y: x // (oneFrom genModValue dir y)) { } (getNixFilesInDir dir);
@@ -29,6 +29,7 @@
       nixosConfigurations = machinesFromDir ./machines //
       {
         vpsNode = lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [ ./machines/node.nix ];
         };
       };

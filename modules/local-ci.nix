@@ -36,7 +36,7 @@ in
           # Invoke tests
           for i in test/*.nix; do ${pkgs.nix}/bin/nix-shell $i; done
 
-          ${config.system.build.nixos-rebuild}/bin/nixos-rebuild switch
+          ${config.system.build.nixos-rebuild}/bin/nixos-rebuild switch --upgrade --impure
           echo "Cronjob finished at $(date)"
         '';
       };

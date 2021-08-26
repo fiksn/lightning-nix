@@ -3,7 +3,6 @@
   imports =
     [
       <nixpkgs/nixos/modules/profiles/hardened.nix>
-      ./modules/default.nix
     ]
 
   # Hardened scudo allocator does not work
