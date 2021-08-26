@@ -9,7 +9,6 @@
   outputs = { self, flake-utils, nixpkgs }:
     with nixpkgs;
     let
-      lib = nixpkgs.lib; 
       getNixFilesInDir = dir: builtins.filter (file: lib.hasSuffix ".nix" file && file != "default.nix") (builtins.attrNames (builtins.readDir dir));
       genKey = str: lib.replaceStrings [ ".nix" ] [ "" ] str;
       genModValue = dir: str: { config }: { imports = [ "/${dir}${str}" ]; };

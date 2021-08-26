@@ -12,5 +12,6 @@
     ./local-ci.nix
     ./hostfw.nix
     ./lnbits.nix
+    ./test.nix
   ];
 }
