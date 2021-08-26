@@ -1,0 +1,52 @@
+general {
+        output_format = i3bar
+        colors = true
+        interval = 1
+}
+
+order += "disk /"
+order += "ethernet enp3s0"
+order += "wireless wlp2s0"
+order += "volume pulse"
+order += "battery 0"
+order += "tztime local"
+
+ethernet enp3s0 {
+        format_up = "E: %ip"
+        format_down = "E: down"
+
+}
+wireless wlp2s0 {
+        format_up = "W: (%quality @ %essid) %ip"
+        format_down = "W: down"
+}
+
+volume pulse {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "pulse"
+}
+
+disk "/" {
+        format = "/ %avail"
+}
+
+disk "/nix/store" {
+        format = "/nix/store %avail"
+}
+
+disk "/home" {
+        format = "/home %avail"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining"
+        last_full_capacity = true
+        integer_battery_capacity = true
+        low_threshold = 15
+        threshold_type = percentage
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
