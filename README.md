@@ -6,18 +6,18 @@ A collection of [nix](https://nixos.org/) packages and modules for running a Bit
 
 My node is running [lnd](https://github.com/lightningnetwork/lnd) and [bitcoind](https://bitcoin.org/en/full-node) on a Raspberry Pi 4. 
 More resources regarding operating a lightning node can be found [here](https://github.com/aljazceru/lightning-network-node-operator).
-How to install NixOS to Raspberry is documented [here](https://nix.dev/tutorials/installing-nixos-on-a-raspberry-pi).
+How to install NixOS on a Raspberry is documented [here](https://nix.dev/tutorials/installing-nixos-on-a-raspberry-pi).
 
 You might want to check out [nix-bitcoin](https://github.com/fort-nix/nix-bitcoin) too. It's a really great project. I have to admit I've "stolen" quite a bit of stuff from there, but
 since then the code diverged a bit. The difference is more philosophical in a sense that this is using [Nix Flakes](https://www.tweag.io/blog/2020-05-25-flakes/)
 to be sort of a library of resources that you can use instead of directly being an application. Which means that for using
 this you will have to write some Nix code. Also I am a bit more biased towards [Lightning Labs](https://lightning.engineering) solutions (but that doesn't
 mean I am againt including c-lightning or something else - it's just that the current node is running lnd and I support that implementation).
-Sure a bit of writing this is also the "not invented here" syndrome.
+Sure the "not invented here syndrome" probably also plays a role here. But at least I've learned a lot about Nix and the lightning network.
 
-Warning: this is more of DIY experiment with Nix!
+!Warning: this is more of DIY experiment with Nix!
 
-Alternatives for running a node using Raspberry Pi are [RaspiBlitz](https://shop.fulmo.org) and [Umbrel](https://getumbrel.com/).
+Simple alternatives for running a node using Raspberry Pi are [RaspiBlitz](https://shop.fulmo.org) and [Umbrel](https://getumbrel.com/).
 
 ## Usage
 
@@ -79,7 +79,9 @@ you can install latest lnd.
 
 ## Support
 
-Feel free to use this or contribute.
+Feel free to use this in any way you wish. Contributions are also welcome. I am also more than happy to help you or open a channel with you. Note however that I
+am not liable for any damages. If you install this on your Raspberry and it explodes or your use this to install latest LND but there is some nasty bug and you lose funds
+I am not responsible.
 
-I am also accepting donations:
+Donations:
 [![tippin.me](https://badgen.net/badge/%E2%9A%A1%EF%B8%8Ftippin.me/@fiksn/F0918E)](https://tippin.me/@fiksn)
