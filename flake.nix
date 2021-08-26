@@ -25,6 +25,9 @@
       # Modules
       nixosModules = modulesFromDir ./modules;
 
+      # Quasi modules (profiles)
+      fakeProfiles = modulesFromDir ./profiles;
+
       # Machines (just demo, others are in private repo)
       nixosConfigurations = machinesFromDir ./machines //
       {
