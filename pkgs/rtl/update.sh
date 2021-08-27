@@ -2,7 +2,7 @@
 
 OWNER=Ride-The-Lightning
 REPO=RTL
-REVISION=${REVISION:-"v0.10.1"}
+REVISION=${REVISION:-"v0.11.0"}
 COMMIT=$(git ls-remote https://github.com/$OWNER/$REPO.git $REVISION | cut -f 1)
 rm -f package.json package-lock.json
 wget https://raw.githubusercontent.com/$OWNER/$REPO/$REVISION/package.json
