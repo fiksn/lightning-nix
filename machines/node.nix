@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ../common.nix
-    ../blockchain-services.nix
-    ../rpi.nix
+    ../profiles/common.nix
+    ../profiles/blockchain-services.nix
+    ../profiles/rpi.nix
+    ../modules/default.nix
   ];
 
   services.node-storage = {
@@ -22,10 +23,11 @@
     };
   };
 
-  local-ci.enable = true;
-
   networking.useDHCP = true;
 
   services.rtl.listenHost = "0.0.0.0";
   networking.firewall.allowedTCPPorts = [ 9735 10009 8080 3000 ];
+
+  # Just for test
+  environment.systemPackages = [ pkgs.lndub ];
 }
