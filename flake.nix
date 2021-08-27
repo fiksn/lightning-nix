@@ -17,6 +17,12 @@
 
       modulesFromDir = dir: builtins.foldl' (x: y: x // (oneFrom genModValue dir y)) { } (getNixFilesInDir dir);
       machinesFromDir = dir: builtins.foldl' (x: y: x // (oneFrom genMachineValue dir y)) { } (getNixFilesInDir dir);
+      pkgs = import nixpkgs {
+        overlays = [
+          self.overlay
+        ];
+        inherit system;
+      };
     in
     {
       # Overlays
