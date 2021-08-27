@@ -27,13 +27,13 @@
     in
     {
       # Overlays
-      overlay = callPackage ./overlay.nix;
+      overlay = import ./overlay.nix;
 
       # Modules
       nixosModules = modulesFromDir ./modules;
 
       # Quasi modules (profiles)
-      fakeProfiles = modulesFromDir ./profiles;
+      myProfiles = modulesFromDir ./profiles;
 
       # Machines (just demo, others are in private repo)
       nixosConfigurations = machinesFromDir ./machines //
