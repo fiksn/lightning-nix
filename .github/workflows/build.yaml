@@ -9,8 +9,8 @@ jobs:
         with:
           install_url: https://nixos-nix-install-tests.cachix.org/serve/i6laym9jw3wg9mw6ncyrk6gjx4l34vvx/install
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
+          nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - run: export NIX_PATH=nixpkgs=channel:nixos-unstable
       - run: nix-build buildTest.nix --arg flakePath \"$(pwd)\" --show-trace --no-out-link
