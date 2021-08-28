@@ -1,4 +1,4 @@
-# lightning-nix ![Build](https://github.com/fiksn/lightning-nix/actions/workflows/build.yaml/badge.svg)
+# lightning-nix ![Build](https://github.com/fiksn/lightning-nix/actions/workflows/build.yaml/badge.svg) [![tippin.me](https://badgen.net/badge/%E2%9A%A1%EF%B8%8Ftippin.me/@fiksn/F0918E)](https://tippin.me/@fiksn)
 A collection of [nix](https://nixos.org/) packages and modules for running a Bitcoin Lightning node
 
 ## Intro
@@ -82,6 +82,3 @@ More [flake examples](https://nixos.wiki/wiki/Flakes)
 Feel free to use this in any way you wish. Contributions are also welcome. I am also more than happy to help you or open a channel with you. Note however that I
 am not liable for any damages. If you install this on your Raspberry and it explodes or your use this to install latest LND but there is some nasty bug and you lose funds
 I am not responsible.
-
-Donations:
-[![tippin.me](https://badgen.net/badge/%E2%9A%A1%EF%B8%8Ftippin.me/@fiksn/F0918E)](https://tippin.me/@fiksn)
