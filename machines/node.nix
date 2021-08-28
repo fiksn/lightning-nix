@@ -1,11 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, self, ... }:
 {
   imports = [
     ../profiles/common.nix
     ../profiles/blockchain-services.nix
     ../profiles/rpi.nix
-    ../modules/default.nix
-  ];
+  ] ++ lib.attrValues self.nixosModules;
 
   services.node-storage = {
     mountPath = "/storage";

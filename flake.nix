@@ -32,7 +32,7 @@
       # Modules
       nixosModules = modulesFromDir ./modules;
 
-      # Quasi modules (profiles)
+      # Quasi modules (profiles) - profile usually contains more modules and unlike modules you don't need to turn on anything, you just select them
       myProfiles = modulesFromDir ./profiles;
 
       # Machines (just demo, others are in private repo)

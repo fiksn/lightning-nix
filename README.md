@@ -9,8 +9,11 @@ How to install NixOS on a Raspberry is documented [here](https://nix.dev/tutoria
 
 You might want to check out [nix-bitcoin](https://github.com/fort-nix/nix-bitcoin) too. It's a really great project. I have to admit I've "stolen" quite a bit of stuff from there, but
 since then the code diverged a bit. The difference is more philosophical in a sense that this is using [Nix Flakes](https://www.tweag.io/blog/2020-05-25-flakes/)
-to be sort of a library of resources that you can use instead of directly being an application. Which means that for using
-this you will have to write some Nix code. Also I am a bit more biased towards [Lightning Labs](https://lightning.engineering) solutions (but that doesn't
+to be sort of a library of resources that you can use instead of directly being an application. Which means you will have to write some Nix code. 
+However there are some dummy [nixosConfigurations](https://github.com/fiksn/lightning-nix/blob/master/flake.nix#L39) in [flake.nix](./flake.nix) - examples
+how to configure your own machines.
+
+Also I am a bit more biased towards [Lightning Labs](https://lightning.engineering) solutions (but this doesn't
 mean I am againt including c-lightning or something else - it's just that the current node is running lnd and I support that implementation).
 Sure the "not invented here syndrome" probably also plays a role here. But at least I've learned a lot about Nix and the lightning network.
 

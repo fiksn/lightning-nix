@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, self, ... }:
 let
   nbxplorerData = "/storage/nbxplorer";
   btcpayserverData = "/storage/btcpayserver";
@@ -11,7 +11,9 @@ let
   server = "1.2.3.4";
 in
 {
-  imports = [ ../profiles/common.nix ];
+  imports = [
+    ../profiles/common.nix
+  ] ++ lib.attrValues self.nixosModules;
 
   services.nginx = {
     enable = true;
