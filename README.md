@@ -4,17 +4,26 @@ A collection of [nix](https://nixos.org/) packages and modules for running a Bit
 ## Intro
 
 My node is running [lnd](https://github.com/lightningnetwork/lnd) and [bitcoind](https://bitcoin.org/en/full-node) on a Raspberry Pi 4. 
-More resources regarding operating a lightning node can be found [here](https://github.com/aljazceru/lightning-network-node-operator).
-How to install NixOS on a Raspberry is documented [here](https://nix.dev/tutorials/installing-nixos-on-a-raspberry-pi).
+More resources regarding operating a lightning node can be found on [Lightning Network Operator](https://github.com/aljazceru/lightning-network-node-operator).
+How to install NixOS on a Raspberry is documented on [nix.dev](https://nix.dev/tutorials/installing-nixos-on-a-raspberry-pi).
 
 You might want to check out [nix-bitcoin](https://github.com/fort-nix/nix-bitcoin) too. It's a really great project. I have to admit I've "stolen" quite a bit of stuff from there, but
-since then the code diverged a bit. The difference is more philosophical in a sense that this is using [Nix Flakes](https://www.tweag.io/blog/2020-05-25-flakes/)
-to be sort of a library of resources that you can use instead of directly being an application. Which means you will have to write some Nix code. 
+since then the code diverged a bit.
+
+~~The difference is more philosophical in a sense that this is using [Nix Flakes](https://www.tweag.io/blog/2020-05-25-flakes/)
+to be sort of a library of resources that you can use instead of directly being an application.~~ (Which means you will have to write some Nix code. 
 However there are some dummy [nixosConfigurations](https://github.com/fiksn/lightning-nix/blob/master/flake.nix#L39) in [flake.nix](./flake.nix) - examples
-how to configure your own machines.
+how to configure your own machines)
+
+Update: just found out they have merged flake support. So there is no big difference anymore. Except that nix-bitcoin is more mature.
+This is sort of what I needed to hack together in order to run my own 2+ year old node, so a lot of modules are a bit different. But with flakes you don't need
+to think of it as competition, just select the parts that you need (or inspect the code to learn something new). Eventually the proper way is probably to
+really upstream all the useful stuff to [nixpkgs](https://github.com/NixOS/nixpkgs). I am really glad I don't have to tinker with [Btcpayserver](https://btcpayserver.org/)
+support on NixOS anymore for instance.
 
 Also I am a bit more biased towards [Lightning Labs](https://lightning.engineering) solutions (but this doesn't
 mean I am againt including c-lightning or something else - it's just that the current node is running lnd and I support that implementation).
+
 Sure the "not invented here syndrome" probably also plays a role here. But at least I've learned a lot about Nix and the lightning network.
 
 !Warning: this is more of DIY experiment with Nix!
