@@ -4,7 +4,7 @@ A collection of [nix](https://nixos.org/) packages and modules for running a Bit
 ## Intro
 
 My node is running [lnd](https://github.com/lightningnetwork/lnd) and [bitcoind](https://bitcoin.org/en/full-node) on a Raspberry Pi 4. 
-More resources regarding operating a lightning node can be found on [Lightning Network Operator](https://github.com/aljazceru/lightning-network-node-operator).
+More resources regarding operating a lightning node can be found in the [Lightning network node operator's guide](https://github.com/aljazceru/lightning-network-node-operator).
 How to install NixOS on a Raspberry is documented on [nix.dev](https://nix.dev/tutorials/installing-nixos-on-a-raspberry-pi).
 
 You might want to check out [nix-bitcoin](https://github.com/fort-nix/nix-bitcoin) too. It's a really great project. I have to admit I've "stolen" quite a bit of stuff from there, but
