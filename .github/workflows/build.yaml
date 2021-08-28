@@ -12,4 +12,5 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - run: export NIX_PATH=nixpkgs=channel:nixos-unstable
       - run: nix-build buildTest.nix --arg hostname \"vpsNode\" --arg flakePath \"$(pwd)\" --show-trace --no-out-link
