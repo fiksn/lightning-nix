@@ -6,6 +6,7 @@ let
   nbxplorerPort = 24444;
   btcpayPort = 3002;
   user = "btcpayserver";
+  myname = "btcpayserver";
   # Full node
   server = "1.2.3.4";
 in
