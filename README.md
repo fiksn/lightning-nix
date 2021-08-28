@@ -1,5 +1,4 @@
-# lightning-nix
-
+# lightning-nix ![Build](https://github.com/fiksn/lightning-nix/actions/workflows/build/badge.svg)
 A collection of [nix](https://nixos.org/) packages and modules for running a Bitcoin Lightning node
 
 ## Intro
