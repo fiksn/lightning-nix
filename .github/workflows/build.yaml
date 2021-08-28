@@ -1,0 +1,9 @@
+name: CI
+on: [push]
+jobs:
+  Build:
+    runs-on: nixpkgs/nix-flakes:latest
+    steps:
+      - run: export NIX_PATH=nixpkgs=channel:nixos-unstable
+      - run: nix-channel --update
+      - run: nix-build buildTest.nix --arg hostname \"vpsNode\" --arg flakePath \"$(pwd)\" --show-trace --no-out-link
