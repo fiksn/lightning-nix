@@ -94,7 +94,7 @@ in
         RPCAUTH="${cfg.btcRpcAuth}"
       '' +
       ''
-        ${pkgs.nbxplorer}/bin/NBXplorer -d ${cfg.dataDir} -b ${cfg.bind} -p ${toString cfg.port} --btcrpcauth $RPCAUTH ${toString cfg.extraCmdLineOptions}
+        ${pkgs.nbxplorer}/bin/nbxplorer -d ${cfg.dataDir} -b ${cfg.bind} -p ${toString cfg.port} --btcrpcauth $RPCAUTH ${toString cfg.extraCmdLineOptions}
       '';
 
       serviceConfig = {

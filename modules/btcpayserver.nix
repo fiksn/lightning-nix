@@ -158,7 +158,7 @@ in
         DATABASE_URL="${cfg.databaseUrl}"
       '' +
       ''
-        ${pkgs.btcpayserver}/bin/BTCPayServer -d ${cfg.dataDir} -b ${cfg.bind} -p ${toString cfg.port} ${(lookup cases cfg.database).switch} $DATABASE_URL ${toString cfg.extraCmdLineOptions};
+        ${pkgs.btcpayserver}/bin/btcpayserver -d ${cfg.dataDir} -b ${cfg.bind} -p ${toString cfg.port} ${(lookup cases cfg.database).switch} $DATABASE_URL ${toString cfg.extraCmdLineOptions};
       '';
 
       serviceConfig = {
