@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, pkgs-unstable ? pkgs }:
 with pkgs;
 {
   rtl = (callPackage ./rtl/override.nix { }).package;
@@ -18,12 +18,12 @@ with pkgs;
   });
 
   aperture = callPackage ./aperture { };
-  btcpayserver = callPackage ./btcpayserver/btcpayserver.nix { };
-  nbxplorer = callPackage ./btcpayserver/nbxplorer.nix { };
+
+  btcpayserver = pkgs-unstable.btcpayserver;
+  nbxplorer = pkgs-unstable.nbxplorer;
   lightning-loop = callPackage ./lightning-loop { };
   lightning-pool = callPackage ./lightning-pool { };
   balanceofsatoshis = (callPackage ./balanceofsatoshis/override.nix { }).package;
-  rpi-eeprom = callPackage ./rpi-eeprom { };
 
   #lightning-terminal = callPackage ./lightning-terminal { };
 }
