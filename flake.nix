@@ -39,7 +39,7 @@
       # Machines (just demo, others are in private repo)
       nixosConfigurations = machinesFromDir ./machines //
       {
-        vpsNode = mkMachine "x86_64-linux" ./machines/node.nix;
+        btcpayserver = mkMachine "x86_64-linux" ./machines/node.nix;
       };
     } //
 
@@ -49,6 +49,14 @@
         pkgs = nixpkgs.legacyPackages.${system};
         pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       in
-      { packages = flake-utils.lib.flattenTree (pkgs.callPackage ./pkgs { }); }
+      {
+        packages =
+          let
+            packages = flake-utils.lib.flattenTree (pkgs.callPackage ./pkgs { });
+            isOk = pkg: !pkg.meta.broken && pkg.meta.available;
+            finalPackages = lib.flip lib.filterAttrs packages (_: isOk);
+          in
+          finalPackages;
+      }
     );
 }

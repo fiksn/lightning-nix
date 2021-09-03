@@ -15,6 +15,10 @@ in
     ../profiles/common.nix
   ] ++ lib.attrValues self.nixosModules;
 
+  # Change me
+  boot.loader.grub.device = "/dev/vda";
+  fileSystems."/" = { device = "/dev/vda1"; fsType = "ext4"; };
+
   services.nginx = {
     enable = true;
 
@@ -41,6 +45,11 @@ in
         ;
       };
     };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    email = "1640719+fiksn@users.noreply.github.com";
   };
 
   services.nbxplorer = {

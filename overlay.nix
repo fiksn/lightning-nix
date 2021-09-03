@@ -1,1 +1,1 @@
-self: super: import ./pkgs { pkgs = super; }
+final: prev: import ./pkgs { pkgs = prev; }
