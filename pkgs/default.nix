@@ -1,5 +1,10 @@
 { pkgs ? import <nixpkgs> { }, pkgs-unstable ? pkgs }:
 with pkgs;
+let
+  depPlatformsAll = inp: builtins.map (x: x.meta.platforms or [ ]) inp;
+  depWithOrig = orig: inp: (depPlatformsAll inp) ++ orig;
+  intersectAll = lol: lib.foldl' (acc: one: if one != [ ] then (lib.intersectLists acc one) else acc) lib.platforms.all lol;
+in
 {
   rtl = (callPackage ./rtl/override.nix { }).package;
   lndhub = (callPackage ./lndhub/override.nix { }).package;
@@ -19,8 +24,15 @@ with pkgs;
 
   aperture = callPackage ./aperture { };
 
-  btcpayserver = pkgs-unstable.btcpayserver;
-  nbxplorer = pkgs-unstable.nbxplorer;
+  # Fix broken platforms
+  btcpayserver = pkgs-unstable.btcpayserver.overrideAttrs (attrs: {
+    meta = attrs.meta // { platforms = intersectAll (depWithOrig ([ attrs.meta.platforms or lib.platforms.linux ]) (attrs.nativeBuildInputs or [ ])); };
+  });
+  nbxplorer = pkgs-unstable.nbxplorer.overrideAttrs (attrs: {
+    meta = attrs.meta // { platforms = intersectAll (depWithOrig ([ attrs.meta.platforms or lib.platforms.linux ]) (attrs.nativeBuildInputs or [ ])); };
+  });
+
+
   lightning-loop = callPackage ./lightning-loop { };
   lightning-pool = callPackage ./lightning-pool { };
   balanceofsatoshis = (callPackage ./balanceofsatoshis/override.nix { }).package;
