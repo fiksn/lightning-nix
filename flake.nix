@@ -39,7 +39,7 @@
       # Machines (just demo, others are in private repo)
       nixosConfigurations = machinesFromDir ./machines //
       {
-        vpsServer = mkMachine "x86_64-linux" ./machines/node.nix;
+        vpsNode = mkMachine "x86_64-linux" ./machines/node.nix;
       };
     } //
 
