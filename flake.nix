@@ -5,9 +5,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    security.url = "github:fiksn/security-nix";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nixpkgs-unstable }:
+  outputs = { self, flake-utils, nixpkgs, nixpkgs-unstable, security }:
     with nixpkgs;
     let
       getNixFilesInDir = dir: builtins.filter (file: lib.hasSuffix ".nix" file && file != "default.nix") (builtins.attrNames (builtins.readDir dir));
@@ -23,7 +24,7 @@
       # https://stackoverflow.com/questions/47650857/nixos-module-imports-with-arguments#answer-58055106 idea
       mkMachine = arch: file: lib.nixosSystem {
         system = arch;
-        modules = [ ({ pkgs, lib, config, options, ... } @ args: { nixpkgs.overlays = [ self.overlay ]; imports = [ (import file (args // { inherit self; })) ]; }) ];
+        modules = [ ({ pkgs, lib, config, options, ... } @ args: { nixpkgs.overlays = [ self.overlay ]; imports = [ (import file (args // { inherit self security; })) ]; }) ];
       };
     in
     {
@@ -31,7 +32,7 @@
       overlay = import ./overlay.nix;
 
       # Modules
-      nixosModules = modulesFromDir ./modules;
+      nixosModules = security.nixosModules // modulesFromDir ./modules;
 
       # Quasi modules (profiles) - profile usually contains more modules and unlike modules you don't need to turn on anything, you just select them
       myProfiles = modulesFromDir ./profiles;

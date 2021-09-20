@@ -12,13 +12,12 @@ in
   lnbits = callPackage ./lnbits { };
   lnd = callPackage ./lnd { };
   bitcoind = bitcoind.overrideAttrs (old: rec {
-    version = "0.21.1";
+    version = "22.0";
     src = fetchurl {
       urls = [
         "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
-        "https://bitcoin.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
       ];
-      sha256 = "sha256-yv8jRJIgz0V1PzEs7+3lOp6sZAALswB5eRZSYja2oeA=";
+      sha256 = "d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b";
     };
   });
 
