@@ -2,7 +2,7 @@
 
 OWNER=BlueWallet
 REPO=LndHub
-REVISION=${REVISION:-"v1.3.0"}
+REVISION=${REVISION:-"v1.4.0"}
 COMMIT=$(git ls-remote https://github.com/$OWNER/$REPO.git $REVISION | cut -f 1)
 rm -f package.json package-lock.json
 wget https://raw.githubusercontent.com/$OWNER/$REPO/$REVISION/package.json

@@ -10,8 +10,8 @@ let
   src = fetchFromGitHub {
     owner = "BlueWallet";
     repo = "LndHub";
-    rev = "v1.3.0";
-    sha256 = "09ygh99m802znqgqs7szrfh4nla1qn4zag3rk2jgvp4l4snbf89p";
+    rev = "v1.4.0";
+    sha256 = "0z3vrbgx2vzyg3i2zsl3x4jrkqvl5x05287pi3qf56qra6wnbqia";
   };
 in
 nodePackages // {

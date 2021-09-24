@@ -8,8 +8,7 @@ let
   python = if nodejs ? python then nodejs.python else python2;
 
   # Create a tar wrapper that filters all the 'Ignoring unknown extended header keyword' noise
-  tarWrapper = runCommand "tarWrapper"
-    { } ''
+  tarWrapper = runCommand "tarWrapper" { } ''
     mkdir -p $out/bin
 
     cat > $out/bin/tar <<EOF
@@ -41,8 +40,7 @@ let
     };
 
   includeDependencies = { dependencies }:
-    lib.optionalString
-      (dependencies != [ ])
+    lib.optionalString (dependencies != [ ])
       (lib.concatMapStrings
         (dependency:
           ''
@@ -59,8 +57,7 @@ let
             cd ..
           ''
         )
-        dependencies
-      );
+        dependencies);
 
   # Recursively composes the dependencies of a package
   composePackage = { name, packageName, src, dependencies ? [ ], ... }@args:
@@ -196,8 +193,7 @@ let
 
   # Extract the Node.js source code which is used to compile packages with
   # native bindings
-  nodeSources = runCommand "node-sources"
-    { } ''
+  nodeSources = runCommand "node-sources" { } ''
     tar --no-same-owner --no-same-permissions -xf ${nodejs.src}
     mv node-* $out
   '';
@@ -410,7 +406,7 @@ let
 
       inherit nodejs;
 
-      inherit dontStrip;# Stripping may fail a build for some package deployments
+      inherit dontStrip;
       inherit dontNpmInstall preRebuild unpackPhase buildPhase;
 
       compositionScript = composePackage args;
@@ -482,7 +478,7 @@ let
         ++ lib.optional (stdenv.isDarwin) libtool
         ++ buildInputs;
 
-      inherit dontStrip;# Stripping may fail a build for some package deployments
+      inherit dontStrip;
       inherit dontNpmInstall unpackPhase buildPhase;
 
       includeScript = includeDependencies { inherit dependencies; };
