@@ -10,8 +10,8 @@ let
   src = fetchFromGitHub {
     owner = "Ride-The-Lightning";
     repo = "RTL";
-    rev = "4ac6d88c6967f4d7ddaa20cdcbe2dce343566501";
-    sha256 = "1x7il58h5ccxam8blcvrywwpqj19bdhrda9gvdbvhsrynmbri8yr";
+    rev = "v0.11.2";
+    sha256 = "03cc21z45bm0f8qmhzaaw305mvph6bdxck8cybhh1nihbjmr7ffv";
   };
 in
 nodePackages // {

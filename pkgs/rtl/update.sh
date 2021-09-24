@@ -2,7 +2,7 @@
 
 OWNER=Ride-The-Lightning
 REPO=RTL
-REVISION=${REVISION:-"v0.11.0"}
+REVISION=${REVISION:-"v0.11.2"}
 COMMIT=$(git ls-remote https://github.com/$OWNER/$REPO.git $REVISION | cut -f 1)
 rm -f package.json package-lock.json
 wget https://raw.githubusercontent.com/$OWNER/$REPO/$REVISION/package.json
@@ -24,7 +24,7 @@ let
   src = fetchFromGitHub {
     owner = "$OWNER";
     repo = "$REPO";
-    rev = "$COMMIT";
+    rev = "$REVISION";
     sha256 = "$HASH";
   };
 in
