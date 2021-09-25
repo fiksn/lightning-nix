@@ -11,30 +11,42 @@ in
   lndconnect = callPackage ./lndconnect { };
   lnbits = callPackage ./lnbits { };
   lnd = callPackage ./lnd { };
+
   bitcoind = bitcoind.overrideAttrs (old: rec {
-    version = "22.0";
+    version = "0.21.1";
     src = fetchurl {
       urls = [
         "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
+        "https://bitcoin.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
       ];
-      sha256 = "d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b";
+      sha256 = "sha256-yv8jRJIgz0V1PzEs7+3lOp6sZAALswB5eRZSYja2oeA=";
     };
-  });
 
-  aperture = callPackage ./aperture { };
+    bitcoind-22 = bitcoind.overrideAttrs (old: rec {
+      version = "22.0";
+      src = fetchurl {
+        urls = [
+          "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
+        ];
+        sha256 = "d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b";
+      };
+    });
 
-  # Fix broken platforms
-  btcpayserver = pkgs-unstable.btcpayserver.overrideAttrs (attrs: {
-    meta = attrs.meta // { platforms = intersectAll (depWithOrig ([ attrs.meta.platforms or lib.platforms.linux ]) (attrs.nativeBuildInputs or [ ])); };
-  });
-  nbxplorer = pkgs-unstable.nbxplorer.overrideAttrs (attrs: {
-    meta = attrs.meta // { platforms = intersectAll (depWithOrig ([ attrs.meta.platforms or lib.platforms.linux ]) (attrs.nativeBuildInputs or [ ])); };
-  });
+    bitcoind-unstable = pkgs-unstable.bitcoind;
 
+    aperture = callPackage ./aperture { };
 
-  lightning-loop = callPackage ./lightning-loop { };
-  lightning-pool = callPackage ./lightning-pool { };
-  balanceofsatoshis = (callPackage ./balanceofsatoshis/override.nix { }).package;
+    # Fix broken platforms
+    btcpayserver = pkgs-unstable.btcpayserver.overrideAttrs (attrs: {
+      meta = attrs.meta // { platforms = intersectAll (depWithOrig ([ attrs.meta.platforms or lib.platforms.linux ]) (attrs.nativeBuildInputs or [ ])); };
+    });
+    nbxplorer = pkgs-unstable.nbxplorer.overrideAttrs (attrs: {
+      meta = attrs.meta // { platforms = intersectAll (depWithOrig ([ attrs.meta.platforms or lib.platforms.linux ]) (attrs.nativeBuildInputs or [ ])); };
+    });
 
-  #lightning-terminal = callPackage ./lightning-terminal { };
-}
+    lightning-loop = callPackage ./lightning-loop { };
+    lightning-pool = callPackage ./lightning-pool { };
+    balanceofsatoshis = (callPackage ./balanceofsatoshis/override.nix { }).package;
+
+    #lightning-terminal = callPackage ./lightning-terminal { };
+  }
