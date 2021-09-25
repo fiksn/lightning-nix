@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 {
   hardware.enableRedistributableFirmware = true;
-  hardware.raspberry-pi."4".fkms-3d.enable = true;
   powerManagement.cpuFreqGovernor = "ondemand";
 
   boot = {
