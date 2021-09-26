@@ -50,4 +50,8 @@ in
   balanceofsatoshis = (callPackage ./balanceofsatoshis/override.nix { }).package;
 
   #lightning-terminal = callPackage ./lightning-terminal { };
+
+  ### Lightning address stuff - https://lightningaddress.com/
+  lnme = callPackage ./lnme { };
+  satdress = callPackage ./satdress { };
 }
