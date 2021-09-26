@@ -113,16 +113,16 @@ in
       serviceConfig = {
         PermissionsStartOnly = "true";
         ExecStart = ''
-          ${pkgs.lnme}/bin/lnme
-          -lnd-address ${cfg.lndUrl}
-          -lnd-cert-path ${cfg.certPath}
-          -lnd-macaroon-path ${cfg.macaroonPath}
-          -port ${toString cfg.listenPort}
-          -request-limit ${toString cfg.requestLimit}
-          ${optionalString cfg.useStaticPath "-static-path ${cfg.staticPath}"}
-          ${optionalString cfg.disableCors "-disable-cors"}
-          ${optionalString cfg.disableLnAddress "-disable-ln-address"}
-          ${optionalString cfg.disableWebsite "-disable-website"}
+          ${pkgs.lnme}/bin/lnme \
+          -lnd-address ${cfg.lndUrl} \
+          -lnd-cert-path ${cfg.certPath} \
+          -lnd-macaroon-path ${cfg.macaroonPath} \
+          -port ${toString cfg.listenPort} \
+          -request-limit ${toString cfg.requestLimit} \
+          ${optionalString cfg.useStaticPath "-static-path ${cfg.staticPath}"}\
+          ${optionalString cfg.disableCors "-disable-cors"}\
+          ${optionalString cfg.disableLnAddress "-disable-ln-address"}\
+          ${optionalString cfg.disableWebsite "-disable-website"}\
         '';
         WorkingDirectory = cfg.dataDir;
         User = cfg.user;
