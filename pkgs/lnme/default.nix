@@ -5,16 +5,16 @@
 }:
 buildGoModule rec {
   pname = "lnme";
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "bumi";
     repo = "lnme";
     rev = "${version}";
-    sha256 = "0gnjfzjg7hvrf9x7xl0r72r7m8fjayxlry0lyad6346nzrs5k5w2";
+    sha256 = "1g5z2n5pak29km5igr85mv2d5bbaa2r393jxmwg2ijbh30d13pxw";
   };
 
-  vendorSha256 = "0g9k62cq78kb1yvnmhr4icjsxvjp4b6i5yxlblbl4201g2hjrshn";
+  vendorSha256 = "07qnzl5f0g2pjgx90qym9a5lgkb8m000k8313daibq6kbzgwy5k9";
   preBuild = ''
     rice embed-go
   '';
