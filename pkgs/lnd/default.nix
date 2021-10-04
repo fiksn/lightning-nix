@@ -6,16 +6,16 @@
 
 buildGoModule rec {
   pname = "lnd";
-  version = "0.13.1-beta";
+  version = "0.13.3-beta";
 
   src = fetchFromGitHub {
     owner = "lightningnetwork";
     repo = "lnd";
     rev = "v${version}";
-    sha256 = "b+5IqSscBf7dOg+Tx8dBeETlpuuCbMddlUrRgbBPmh0=";
+    sha256 = "05ai8nyrc8likq5n7i9klfi9550ki8sqklv8axjvi6ql8v9bzk61";
   };
 
-  vendorSha256 = "Kn5FhcG4nmWE9w46OgEjdwgDI/cQTfRuqBwwalE/ZsI=";
+  vendorSha256 = "0xf8395g6hifbqwbgapllx38y0759xp374sja7j1wk8sdj5ngql5";
 
   doCheck = false;
 
