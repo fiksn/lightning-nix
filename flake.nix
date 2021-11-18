@@ -24,12 +24,12 @@
       # https://stackoverflow.com/questions/47650857/nixos-module-imports-with-arguments#answer-58055106 idea
       mkMachine = arch: file: lib.nixosSystem {
         system = arch;
-        modules = [ ({ pkgs, lib, config, options, ... } @ args: { nixpkgs.overlays = [ self.overlay ]; imports = [ (import file (args // { inherit self security; })) ]; }) ];
+        modules = [ ({ pkgs, lib, config, options, ... } @ args: { nixpkgs.overlays = lib.attrValues self.overlays; imports = [ (import file (args // { inherit self security; })) ]; }) ];
       };
     in
     {
       # Overlays
-      overlay = (import ./overlay.nix) ++ security.overlay;
+      overlays = (if security ? overlays then security.overlays else {} ) // (if security ? overlay then { p = security.overlay; } else {} ) // { t = import ./overlay.nix; };
 
       # Modules
       nixosModules = security.nixosModules // modulesFromDir ./modules;
