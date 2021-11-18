@@ -29,7 +29,7 @@
     in
     {
       # Overlays
-      overlay = import ./overlay.nix;
+      overlay = (import ./overlay.nix) ++ security.overlay;
 
       # Modules
       nixosModules = security.nixosModules // modulesFromDir ./modules;
