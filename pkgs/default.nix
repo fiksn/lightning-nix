@@ -54,4 +54,8 @@ in
   ### Lightning address stuff - https://lightningaddress.com/
   lnme = callPackage ./lnme { };
   satdress = callPackage ./satdress { };
+
+  python3Packages = (pkgs.python3.override {
+    packageOverrides = import ./python-packages self;
+  }).pkgs;
 }
