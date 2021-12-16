@@ -15,7 +15,7 @@ buildPythonPackage rec {
 
   format = "other";
 
-  buildInputs = [
+  propagatedBuildInputs = [
     yachalk
     grpcio
     protobuf
