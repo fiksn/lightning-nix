@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, buildPythonPackage, grpcio, protobuf, six, yachalk }:
+{ lib, stdenv, fetchFromGitHub, buildPythonPackage, grpcio, protobuf, six, yachalk, google-api-python-client }:
 
 buildPythonPackage rec {
   pname = "rebalance-lnd";
@@ -20,6 +20,7 @@ buildPythonPackage rec {
     grpcio
     protobuf
     six
+    google-api-python-client
   ];
 
   installPhase = ''
