@@ -4,6 +4,10 @@ let
   depPlatformsAll = inp: builtins.map (x: x.meta.platforms or [ ]) inp;
   depWithOrig = orig: inp: (depPlatformsAll inp) ++ orig;
   intersectAll = lol: lib.foldl' (acc: one: if one != [ ] then (lib.intersectLists acc one) else acc) lib.platforms.all lol;
+
+  python3Packages = (pkgs.python3.override {
+    packageOverrides = import ./python-packages self;
+  }).pkgs;
 in
 {
   rtl = (callPackage ./rtl/override.nix { }).package;
@@ -54,4 +58,8 @@ in
   ### Lightning address stuff - https://lightningaddress.com/
   lnme = callPackage ./lnme { };
   satdress = callPackage ./satdress { };
+
+  inherit python3Packages;
+
+  rebalance-lnd = python3Packages.rebalance-lnd;
 }
