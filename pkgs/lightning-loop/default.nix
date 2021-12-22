@@ -2,12 +2,12 @@
 
 buildGoModule rec {
   pname = "lightning-loop";
-  version = "0.11.0-beta";
+  version = "0.16.0-beta";
 
   src = fetchurl {
     url = "https://github.com/lightninglabs/loop/releases/download/v${version}/loop-source-v${version}.tar.gz";
     # Use ./get-sha256.sh to fetch latest (verified) sha256
-    sha256 = "sha256-fWYYl6dnJqxNpdQjwjn86DHF9pr8f1doZnEVVTyCWII=";
+    sha256 = "sha256-kWYYl6dnJqxNpdQjwjn86DHF9pr8f1doZnEVVTyCWII=";
   };
 
   # tarball contains multiple files/directories

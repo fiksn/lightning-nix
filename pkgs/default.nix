@@ -51,9 +51,10 @@ in
 
   lightning-loop = callPackage ./lightning-loop { };
   lightning-pool = callPackage ./lightning-pool { };
+  lightning-terminal = callPackage ./lightning-terminal { };
+
   balanceofsatoshis = (callPackage ./balanceofsatoshis/override.nix { }).package;
 
-  #lightning-terminal = callPackage ./lightning-terminal { };
 
   ### Lightning address stuff - https://lightningaddress.com/
   lnme = callPackage ./lnme { };

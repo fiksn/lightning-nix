@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, git, buildGoPackage }:
+{ stdenv, lib, fetchFromGitHub, git, buildGoPackage }:
 
 buildGoPackage rec {
   pname = "lndconnect";
@@ -15,7 +15,7 @@ buildGoPackage rec {
 
   goDeps = ./deps.nix;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     homepage = "https://github.com/LN-Zap/lndconnect";
     license = licenses.mit;
   };

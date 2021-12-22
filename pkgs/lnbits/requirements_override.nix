@@ -29,7 +29,7 @@ filterValid {
     propagatedBuildInputs = [
       self."setuptools"
     ];
-    meta = with pkgs.stdenv.lib; {
+    meta = with lib; {
       homepage = "https://github.com/pypa/setuptools_scm/";
       license = licenses.mit;
       description = "the blessed package to manage your versions by scm tags";
@@ -50,7 +50,7 @@ filterValid {
       self."wheel"
     ];
     propagatedBuildInputs = [ ];
-    meta = with pkgs.stdenv.lib; {
+    meta = with lib; {
       homepage = "https://github.com/pytest-dev/pytest-runner/";
       license = licenses.mit;
       description = "Invoke py.test as distutils command with dependency resolution";
