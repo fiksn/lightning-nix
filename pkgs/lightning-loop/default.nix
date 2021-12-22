@@ -6,8 +6,7 @@ buildGoModule rec {
 
   src = fetchurl {
     url = "https://github.com/lightninglabs/loop/releases/download/v${version}/loop-source-v${version}.tar.gz";
-    # Use ./get-sha256.sh to fetch latest (verified) sha256
-    sha256 = "sha256-kWYYl6dnJqxNpdQjwjn86DHF9pr8f1doZnEVVTyCWII=";
+    sha256 = "097x128k6g93s3hpdss5i28i7ai9zmrvpwimq3i55a7hi6qgvdch";
   };
 
   # tarball contains multiple files/directories
@@ -22,7 +21,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/loop" "cmd/loopd" ];
 
-  vendorSha256 = "sha256-lMQsoL+u//MJtHa9bINIsShq479iChLKyUjJM92ujM8=";
+  vendorSha256 = "14862603rrss14p537j9i7iwflaaprwrnslmqm9hpb7hj52bxqfv";
 
   meta = with lib; {
     description = "Lightning Loop: A Non-Custodial Off/On Chain Bridge";
