@@ -1,4 +1,7 @@
-{ buildGoModule, fetchFromGitHub, lib }:
+{ buildGoModule
+, fetchFromGitHub
+, lib
+}:
 
 buildGoModule rec {
   pname = "lightning-terminal";
@@ -13,12 +16,12 @@ buildGoModule rec {
 
   vendorSha256 = "1c9i255csq80ygpsjgl5fh858bwzazynfw98629fvy2nc2blywkl";
 
-  subPackages = [ "cmd/litcli" "cmd/litd" ];
+  subPackages = [ "cmd/litcli "cmd/litd" ];
 
   meta = with lib; {
     description = "Lightning Terminal";
     homepage = "https://github.com/lightningnlabs/lightning-terminal";
-    license = lib.licenses.mit;
-    maintainers = with maintainers; [ cypherpunk2140 ];
+    license = licenses.mit;
+    maintainers = with maintainers; [ proofofkeags prusnak ];
   };
 }

@@ -1,31 +1,27 @@
-{ pkgs, buildGoModule, fetchurl, lib }:
+{ buildGoModule
+, fetchFromGitHub
+, lib
+}:
 
 buildGoModule rec {
   pname = "lightning-loop";
   version = "0.16.0-beta";
 
-  src = fetchurl {
-    url = "https://github.com/lightninglabs/loop/releases/download/v${version}/loop-source-v${version}.tar.gz";
-    sha256 = "097x128k6g93s3hpdss5i28i7ai9zmrvpwimq3i55a7hi6qgvdch";
+  src = fetchFromGitHub {
+    owner = "lightninglabs";
+    repo = "loop";
+    rev = "v${version}";
+    sha256 = "0q4lk338mr30frilgnjr43gd55z7ryj2s260437b4pnp03hmbf10";
   };
-
-  # tarball contains multiple files/directories
-
-  preBuild = ''
-    mkdir loop-src
-    mv * loop-src || true
-    cd loop-src
-  '';
-
-  sourceRoot = ".";
-
-  subPackages = [ "cmd/loop" "cmd/loopd" ];
 
   vendorSha256 = "14862603rrss14p537j9i7iwflaaprwrnslmqm9hpb7hj52bxqfv";
 
+  subPackages = [ "cmd/loop" "cmd/loopd" ];
+
   meta = with lib; {
-    description = "Lightning Loop: A Non-Custodial Off/On Chain Bridge";
+    description = "Lightning Loop Client";
     homepage = "https://github.com/lightninglabs/loop";
-    license = lib.licenses.mit;
+    license = licenses.mit;
+    maintainers = with maintainers; [ proofofkeags prusnak ];
   };
 }
