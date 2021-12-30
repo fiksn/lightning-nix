@@ -1,4 +1,5 @@
 { buildGoModule
+, mkYarnPackage
 , fetchFromGitHub
 , lib
 }:
@@ -16,12 +17,41 @@ buildGoModule rec {
 
   vendorSha256 = "1c9i255csq80ygpsjgl5fh858bwzazynfw98629fvy2nc2blywkl";
 
-  subPackages = [ "cmd/litcli "cmd/litd" ];
+  subPackages = [ "cmd/litcli" "cmd/litd" ];
+
+  frontend = let pname = "lightning-terminal"; in mkYarnPackage {
+    name = "lightning-terminal-frontend";
+    src = "${src}/app";
+    packageJSON = "${src}/app/package.json";
+    yarnLock = "${src}/app/yarn.lock";
+
+    doDist = false;
+    buildPhase = ''
+      runHook preBuild
+      yarn --offline build
+      runHook postBuild
+    '';
+
+    installPhase = ''
+      runHook preInstall
+      ls -ali || true
+      ls -ali build || true
+      mv build $out
+      runHook postInstall
+    '';
+  };
+
+  postPatch = ''
+    mkdir -p app/build
+    echo ${frontend}
+    find ${frontend}
+    #cp ${frontend}/* app/build
+  '';
 
   meta = with lib; {
     description = "Lightning Terminal";
     homepage = "https://github.com/lightningnlabs/lightning-terminal";
     license = licenses.mit;
-    maintainers = with maintainers; [ proofofkeags prusnak ];
   };
+
 }
