@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "github:nixos/nixpkgs/release-21.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     security.url = "github:fiksn/security-nix";
   };
@@ -29,7 +29,7 @@
     in
     {
       # Overlays
-      overlays = (if security ? overlays then security.overlays else {} ) // (if security ? overlay then { p = security.overlay; } else {} ) // { t = import ./overlay.nix; };
+      overlays = (if security ? overlays then security.overlays else { }) // (if security ? overlay then { p = security.overlay; } else { }) // { t = import ./overlay.nix; };
 
       # Modules
       nixosModules = security.nixosModules // modulesFromDir ./modules;
