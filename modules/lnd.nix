@@ -16,6 +16,7 @@ let
 
     protocol.wumbo-channels=true
     accept-keysend=true
+    accept-amp=true
 
     ${cfg.extraConfig}
   '';
