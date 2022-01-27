@@ -17,11 +17,11 @@
     },
     "flake-utils_2": {
       "locked": {
-        "lastModified": 1637014545,
-        "narHash": "sha256-26IZAc5yzlD9FlDT54io1oqG/bBoyka+FJk5guaX4x4=",
+        "lastModified": 1642700792,
+        "narHash": "sha256-XqHrk7hFb+zBvRg6Ghl+AZDq03ov6OshJLiSWOoX5es=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "bba5dcc8e0b20ab664967ad83d24d64cb64ec4f4",
+        "rev": "846b2ae0fc4cc943637d3d1def4454213e203cba",
         "type": "github"
       },
       "original": {
@@ -32,11 +32,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1643236468,
-        "narHash": "sha256-voGrXCMOPf3+eyidJJqlJ6hGot2aiEbSwn66hc+0Bfg=",
+        "lastModified": 1643292922,
+        "narHash": "sha256-wNYjwj9RnSED4xvbNfGBldU08N96TiXvoLPdTaOIvOA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d7f79af1ee420c6f2f22af74154bca53c26bacf0",
+        "rev": "97885bb7dd36b559c511c20d13e13affb9fef678",
         "type": "github"
       },
       "original": {
@@ -64,16 +64,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1637148124,
-        "narHash": "sha256-uLvC4RU2nl3TjvQGaJzuUIEtbu/AcMwkj2UebECSpp8=",
+        "lastModified": 1643236468,
+        "narHash": "sha256-voGrXCMOPf3+eyidJJqlJ6hGot2aiEbSwn66hc+0Bfg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2e4a1ac9c7b79012111ab99b27055523e5a7c0f0",
+        "rev": "d7f79af1ee420c6f2f22af74154bca53c26bacf0",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "release-21.05",
+        "ref": "release-21.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -92,11 +92,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1637257079,
-        "narHash": "sha256-QDY68NoiqPt4g1ppLH0PvBZJ/AA/BoDQEyX2UcDqC1A=",
+        "lastModified": 1643241407,
+        "narHash": "sha256-KcpcgzAAbM26MsfF2YuJS7fCsIqPTtjwcpeHcdTEEI8=",
         "owner": "fiksn",
         "repo": "security-nix",
-        "rev": "4cacc63cf8755dc13107203f18b2db957d45611c",
+        "rev": "4ac74a6c18260ef55cdb9f79152af1457006f5a2",
         "type": "github"
       },
       "original": {
