@@ -10,8 +10,8 @@ let
   src = fetchFromGitHub {
     owner = "alexbosworth";
     repo = "balanceofsatoshis";
-    rev = "a91c46071129cc115f81302847dba3d8516670d9";
-    sha256 = "0bliylyj2p0c1x3qn4xag1372y0chgnb5j9pnlgyaq9pgyw6nz5b";
+    rev = "v11.19.0";
+    sha256 = "0jiq854xkbx06pl4x6p4033xq98y0ggm3rimf6iqj1alq3s96m05";
   };
 in
 nodePackages // {

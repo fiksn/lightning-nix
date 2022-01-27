@@ -1,31 +1,27 @@
-{ pkgs, buildGoModule, fetchurl, lib }:
+{ buildGoModule
+, fetchFromGitHub
+, lib
+}:
 
 buildGoModule rec {
   pname = "lightning-pool";
-  version = "0.3.2-alpha";
+  version = "0.5.3-alpha";
 
-  src = fetchurl {
-    url = "https://github.com/lightninglabs/pool/releases/download/v${version}/pool-source-v${version}.tar.gz";
-    sha256 = "sha256-Vvy2ExW5gejvmRtd5DPesBj9pKHcZY7RyxF/xzM9H6k=";
+  src = fetchFromGitHub {
+    owner = "lightninglabs";
+    repo = "pool";
+    rev = "v${version}";
+    sha256 = "1nc3hksk9qcxrsyqpz9vcfc8x093rc8yx8ppfk177j9fhdnn8bk7";
   };
 
-  # tarball contains multiple files/directories
-
-  preBuild = ''
-    mkdir pool-src
-    mv * pool-src || true
-    cd pool-src
-  '';
-
-  sourceRoot = ".";
+  vendorSha256 = "09yxaa74814l1rp0arqhqpplr2j0p8dj81zqcbxlwp5ckjv9r2za";
 
   subPackages = [ "cmd/pool" "cmd/poold" ];
 
-  vendorSha256 = "sha256-njJcE5nDKtzmJqbLoKx7qWa+9oeRYR4WwFcOxk/WPNs=";
-
   meta = with lib; {
-    description = "Lightning Pool: A non-custodial batched uniform clearing-price auction for Lightning Channel Leases (LCL).";
+    description = "Lightning Pool Client";
     homepage = "https://github.com/lightninglabs/pool";
-    license = lib.licenses.mit;
+    license = licenses.mit;
+    maintainers = with maintainers; [ proofofkeags prusnak ];
   };
 }

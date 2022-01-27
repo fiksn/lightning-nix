@@ -17,5 +17,6 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Yet Another Chalk - terminal string styling done right";
     homepage = "https://github.com/bluenote10/yachalk";
+    license = licenses.mit;
   };
 }
