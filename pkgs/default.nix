@@ -17,17 +17,6 @@ in
   lnd = callPackage ./lnd { };
 
   bitcoind = bitcoind.overrideAttrs (old: rec {
-    version = "0.21.1";
-    src = fetchurl {
-      urls = [
-        "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
-        "https://bitcoin.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
-      ];
-      sha256 = "sha256-yv8jRJIgz0V1PzEs7+3lOp6sZAALswB5eRZSYja2oeA=";
-    };
-  });
-
-  bitcoind-22 = bitcoind.overrideAttrs (old: rec {
     version = "22.0";
     src = fetchurl {
       urls = [
