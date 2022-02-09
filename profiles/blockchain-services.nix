@@ -12,10 +12,12 @@ in
   users = {
     users = {
       bitcoin.isSystemUser = true;
+      bitcoin.group = "bitcoin";
       bitcoin.extraGroups = [ keysGroup ];
       lnd.extraGroups = [ keysGroup ];
       lnd.isSystemUser = true;
     };
+    groups.bitcoin = {};
   };
 
   services.bitcoin-secrets = {
