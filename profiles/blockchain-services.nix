@@ -9,6 +9,8 @@ let
   '';
 in
 {
+  imports = [ ../modules ];
+
   users = {
     users = {
       bitcoin.isSystemUser = true;

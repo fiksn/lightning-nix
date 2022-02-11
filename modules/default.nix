@@ -10,7 +10,6 @@
     ./nbxplorer.nix
     ./btcpayserver.nix
     ./local-ci.nix
-    ./hostfw.nix
     ./lnbits.nix
     ./lnme.nix
     ./test.nix
