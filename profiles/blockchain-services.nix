@@ -18,8 +18,10 @@ in
       bitcoin.extraGroups = [ keysGroup ];
       lnd.extraGroups = [ keysGroup ];
       lnd.isSystemUser = true;
+      lnd.group = "lnd";
     };
     groups.bitcoin = {};
+    groups.lnd = {};
   };
 
   services.bitcoin-secrets = {
