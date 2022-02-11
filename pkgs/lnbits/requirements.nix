@@ -6,8 +6,8 @@
 #
 
 { pkgs ? import <nixpkgs> { }
-, overrides ? ({ pkgs, python }: self: super: { }
-, lib)
+, overrides ? ({ pkgs, python }: self: super: { })
+, lib
 }:
 let
   inherit (pkgs) makeWrapper;
