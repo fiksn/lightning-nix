@@ -12,7 +12,7 @@
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
-      experimental-features = ca-references flakes nix-command
+      experimental-features = flakes nix-command
       keep-outputs = true
     '';
   };
