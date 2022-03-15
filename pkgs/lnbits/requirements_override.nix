@@ -7,13 +7,14 @@ self: super:
 let
   filterValid = filterAttrs (name: value: hasAttr name super);
 in
-filterValid {
-  "quart-compress" =
-    super."quart-compress".overrideDerivation (old: { buildInputs = old.buildInputs ++ [ self."pytest-runner" ]; });
+filterValid
+  {
+    "quart-compress" =
+      super."quart-compress".overrideDerivation (old: { buildInputs = old.buildInputs ++ [ self."pytest-runner" ]; });
 
-  "httpx" =
-    super."httpx".overrideDerivation (old: { buildInputs = old.buildInputs ++ [ self."idna" ]; });
-} // {
+    "httpx" =
+      super."httpx".overrideDerivation (old: { buildInputs = old.buildInputs ++ [ self."idna" ]; });
+  } // {
   "setuptools-scm" = python.mkDerivation {
     name = "setuptools-scm-5.0.1";
     src = pkgs.fetchurl {
@@ -29,7 +30,7 @@ filterValid {
     propagatedBuildInputs = [
       self."setuptools"
     ];
-    meta = with lib; {
+    meta = with pkgs.lib; {
       homepage = "https://github.com/pypa/setuptools_scm/";
       license = licenses.mit;
       description = "the blessed package to manage your versions by scm tags";
@@ -50,7 +51,7 @@ filterValid {
       self."wheel"
     ];
     propagatedBuildInputs = [ ];
-    meta = with lib; {
+    meta = with pkgs.lib; {
       homepage = "https://github.com/pytest-dev/pytest-runner/";
       license = licenses.mit;
       description = "Invoke py.test as distutils command with dependency resolution";
