@@ -96,7 +96,7 @@ in
       deprecatedrpc=accounts
     '';
 
-    systemd.services.lndhub-credentials = {
+    systemd.services.lndhub_credentials = {
       description = "Take care of LndHub credentials";
       wantedBy = [ "multi-user.target" ];
       script = ''
@@ -113,12 +113,15 @@ in
       };
     };
 
+    systemd.services.redis.requires = [ "lndhub_credentials.service" ];
+    systemd.services.redis.after = [ "lndhub_credentials.service" ];
+
     systemd.services.lndhub = {
       description = "Run LndHub";
       path = [ pkgs.lndhub ];
       wantedBy = [ "multi-user.target" ];
-      requires = [ "bitcoind-default.service" "lnd.service" ];
-      after = [ "bitcoind-default.service" "lnd.service" ];
+      requires = [ "lndhub_credentials.service" "bitcoind-default.service" "lnd.service" ];
+      after = [ "lndhub_credentials.service" "bitcoind-default.service" "lnd.service" ];
       environment = {
         PORT = "3001";
       };
