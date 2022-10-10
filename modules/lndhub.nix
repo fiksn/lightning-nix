@@ -113,8 +113,9 @@ in
       };
     };
 
-    systemd.services.redis.requires = [ "lndhub-credentials.service" ];
-    systemd.services.redis.after = [ "lndhub-credentials.service" ];
+    # TBD
+    #systemd.services.redis.requires = [ "lndhub-credentials.service" ];
+    #systemd.services.redis.after = [ "lndhub-credentials.service" ];
 
     systemd.services.lndhub = {
       description = "Run LndHub";
