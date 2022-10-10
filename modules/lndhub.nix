@@ -87,7 +87,7 @@ in
       name = cfg.group;
     };
 
-    services.redis = {
+    services.redis.servers."" = {
       enable = true;
       requirePassFile = "${cfg.redisPassFile}";
     };
