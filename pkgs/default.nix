@@ -14,15 +14,15 @@ in
   lndhub = (callPackage ./lndhub/override.nix { }).package;
   lndconnect = callPackage ./lndconnect { };
   lnbits = callPackage ./lnbits { };
-  lnd = callPackage ./lnd { };
+  lnd = (callPackage ./lnd { }).override { buildGoModule = pkgs.buildGoModule.override { go = pkgs.go_1_17; }; };
 
   bitcoind = bitcoind.overrideAttrs (old: rec {
-    version = "22.0";
+    version = "23.0";
     src = fetchurl {
       urls = [
         "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
       ];
-      sha256 = "d0e9d089b57048b1555efa7cd5a63a7ed042482045f6f33402b1df425bf9613b";
+      sha256 = "01fcb90pqip3v77kljykx51cmg7jdg2cmp7ys0a40svdkps8nx16";
     };
   });
 
