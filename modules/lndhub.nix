@@ -117,8 +117,8 @@ in
       description = "Run LndHub";
       path = [ pkgs.lndhub ];
       wantedBy = [ "multi-user.target" ];
-      requires = [ "lndhub-credentials.service" "bitcoind-default.service" "lnd.service" ];
-      after = [ "lndhub-credentials" "bitcoind-default.service" "lnd.service" ];
+      requires = [ "bitcoind-default.service" "lnd.service" ];
+      after = [ "bitcoind-default.service" "lnd.service" ];
       environment = {
         PORT = "3001";
       };
