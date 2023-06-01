@@ -16,14 +16,9 @@ in
   lnbits = callPackage ./lnbits { };
   lnd = (callPackage ./lnd { });
 
-  bitcoind = bitcoind.overrideAttrs (old: rec {
-    version = "24.0.1";
-    src = fetchurl {
-      urls = [
-        "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
-      ];
-      sha256 = "12d4ad6dfab4767d460d73307e56d13c72997e114fad4f274650f95560f5f2ff";
-    };
+  bitcoind-fullrbf = bitcoind.overrideAttrs (old: rec {
+    version = "25.0-fullrbf";
+    src = pkgs.fetchFromGitHub { owner = "petertodd"; repo = "bitcoin"; rev = "full-rbf-v25.0"; sha256 = "10n1l0y3wpnzp4irxndc75l4lijlqcclgpslb5kbdyiql8wb8x7j"; };
   });
 
   bitcoind-unstable = pkgs-unstable.bitcoind;
