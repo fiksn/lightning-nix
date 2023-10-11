@@ -3,19 +3,18 @@
 , lib
 , tags ? [ "autopilotrpc" "signrpc" "walletrpc" "chainrpc" "invoicesrpc" "watchtowerrpc" ]
 }:
-
 buildGoModule rec {
   pname = "lnd";
-  version = "0.16.2-beta";
+  version = "0.17.0-beta";
 
   src = fetchFromGitHub {
     owner = "lightningnetwork";
     repo = "lnd";
     rev = "v${version}";
-    sha256 = "0vfd3qpi5nz85w48ds10978qbsgvj1sfygmxcn5ixf3x5xlvyjdk";
+    hash = "sha256-HndO7vp/sia352hs23xAgrpyJ/CfbRxYAAhLZ4q94Pc=";
   };
 
-  vendorSha256 = "1zdfaknl23jab1wl2bhh73gskz0gwdf9hnjl8c0y6s3slvknb1zd";
+  vendorHash = "sha256-4n81AZLKCTEV4+p4kRhZbzYsdRGIztzh6EKPin8W1Z0=";
 
   doCheck = false;
 
