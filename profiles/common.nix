@@ -7,7 +7,7 @@
 
   # Hardened scudo allocator does not work
   environment.memoryAllocator.provider = lib.mkForce "libc";
-  environment.systemPackages = with pkgs; [ dhcp tcpdump nmap git go curl bash bc coreutils curl dos2unix exfat gnupg htop jq mosh netcat ngrep ntp openssl pssh pv pwgen s3fs screen strace sshfs tig tmux wireshark-cli unzip vim wget inetutils rsync ncdu ];
+  environment.systemPackages = with pkgs; [ tcpdump nmap git go curl bash bc coreutils curl dos2unix exfat gnupg htop jq mosh netcat ngrep ntp openssl pssh pv pwgen s3fs screen strace sshfs tig tmux wireshark-cli unzip vim wget inetutils rsync ncdu ];
 
   nix = {
     package = pkgs.nixUnstable;
